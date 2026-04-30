@@ -4,7 +4,7 @@
  * @performance ScrollTrigger-driven, GPU-transformed
  */
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useScroll, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
@@ -21,7 +21,7 @@ interface TunnelSegmentProps {
 }
 
 const TunnelSegment: React.FC<TunnelSegmentProps> = ({
-  experience,
+  experience: _experience,
   index,
   total,
 }) => {
@@ -34,12 +34,6 @@ const TunnelSegment: React.FC<TunnelSegmentProps> = ({
     if (!groupRef.current) return;
     
     const scrollProgress = scroll.offset;
-    const segmentStart = index / total;
-    const segmentEnd = (index + 1) / total;
-    
-    // Fade in/out based on scroll position
-    const inRange = scrollProgress >= segmentStart - 0.1 && scrollProgress <= segmentEnd + 0.1;
-    const targetOpacity = inRange ? 1 : 0.3;
     
     // Move through tunnel
     const tunnelProgress = (scrollProgress * total - index) * 8;
@@ -121,4 +115,4 @@ export const TimelineTunnel: React.FC<TimelineTunnelProps> = ({
 };
 
 // ScrollControls wrapper
-import { useScroll as useDreiScroll, ScrollControls } from '@react-three/drei';
+import { ScrollControls } from '@react-three/drei';

@@ -4,7 +4,7 @@
  * @performance Type-only exports, zero runtime overhead
  */
 
-import { Vector3 } from 'three';
+import { Vector3, Texture, Side } from 'three';
 import { z } from 'zod';
 
 // ============================================================================
@@ -184,7 +184,7 @@ export interface NavLinkProps {
 
 export interface UniformConfig {
   [key: string]: {
-    value: number | Vector3 | number[] | THREE.Texture;
+    value: number | Vector3 | number[] | Texture;
     type?: 'f' | 'v2' | 'v3' | 't';
   };
 }
@@ -194,7 +194,7 @@ export interface ShaderMaterialConfig {
   vertexShader: string;
   fragmentShader: string;
   transparent?: boolean;
-  side?: THREE.Side;
+  side?: Side;
 }
 
 // ============================================================================

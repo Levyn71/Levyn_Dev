@@ -19,7 +19,6 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({
   mouseX,
   mouseY,
 }) => {
-  const meshRef = useRef<THREE.InstancedMesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
   const [positions, colors] = useMemo(() => {

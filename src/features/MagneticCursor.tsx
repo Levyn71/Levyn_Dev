@@ -6,7 +6,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { useAppStore, selectCursor, selectReducedMotion } from '@/app/store';
+import { useAppStore, selectReducedMotion } from '@/app/store';
 
 interface CursorState {
   x: number;
@@ -25,7 +25,6 @@ export const MagneticCursor: React.FC = () => {
     isPointer: false,
   });
   
-  const storeCursor = useAppStore(selectCursor);
   const reducedMotion = useAppStore(selectReducedMotion);
   const posRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef<number | null>(null);
@@ -48,8 +47,8 @@ export const MagneticCursor: React.FC = () => {
       
       setCursorState((prev) => ({
         ...prev,
-        isHovering: isInteractive,
-        isPointer: isInteractive,
+        isHovering: !!isInteractive,
+        isPointer: !!isInteractive,
       }));
     };
 

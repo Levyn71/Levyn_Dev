@@ -6,7 +6,7 @@
 import * as THREE from 'three';
 
 export const ThreeUtils = {
-  createGradientTexture(colors: string[], size: number = 512): THREE.DataTexture {
+  createGradientTexture(colors: string[], size: number = 512): THREE.CanvasTexture {
     const canvas = document.createElement('canvas');
     canvas.width = size;
     canvas.height = size;

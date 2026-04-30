@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SkillsNebula } from '@/features';
-import { SectionHeading, Badge } from '@/shared/ui';
+import { SectionHeading } from '@/shared/ui';
 import { portfolioData } from '@/shared/config';
 import { useInView } from '@/shared/hooks';
 import type { Skill } from '@/types';

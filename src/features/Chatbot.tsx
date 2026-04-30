@@ -6,7 +6,6 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/shared/ui';
 
 interface Message {
   id: string;

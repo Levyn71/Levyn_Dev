@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [portalHovered, setPortalHovered] = useState(false);
+  const [_portalHovered, setPortalHovered] = useState(false);
   const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.2 });
 
   const handleSubmit = async (e: React.FormEvent) => {

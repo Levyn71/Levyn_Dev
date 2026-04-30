@@ -8,7 +8,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { Hero3DScene } from '@/features';
-import { Button, AnimatedText } from '@/shared/ui';
+import { Button } from '@/shared/ui';
 import { portfolioData } from '@/shared/config';
 import { useAppStore, selectCursor } from '@/app/store';
 import { useInView } from '@/shared/hooks';

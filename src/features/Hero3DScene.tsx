@@ -16,7 +16,6 @@ interface HolographicObjectProps {
 
 const HolographicTorus: React.FC<HolographicObjectProps> = ({ mouseX, mouseY }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const materialRef = useRef<THREE.ShaderMaterial>(null);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -43,7 +42,6 @@ const HolographicTorus: React.FC<HolographicObjectProps> = ({ mouseX, mouseY }) 
       <mesh ref={meshRef} scale={2}>
         <torusKnotGeometry args={[1, 0.3, 128, 16]} />
         <MeshDistortMaterial
-          ref={materialRef}
           color="#6366f1"
           emissive="#4338ca"
           emissiveIntensity={0.5}
