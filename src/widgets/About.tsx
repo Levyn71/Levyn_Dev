@@ -23,13 +23,7 @@ export const About: React.FC = () => {
   const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.2 });
 
   return (
-    <section id="about" className="relative overflow-hidden px-4 py-32 md:px-8">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-accent-1/10 blur-[140px]" />
-        <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-accent-2/10 blur-[140px]" />
-      </div>
-
+    <section id="about" className="relative overflow-hidden px-4 py-24 md:px-8 md:py-32">
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           title="About Me"
@@ -37,16 +31,16 @@ export const About: React.FC = () => {
           index={1}
         />
 
-        <div ref={ref} className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div ref={ref} className="grid items-start gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Bio */}
-          <div className="space-y-6 lg:col-span-7">
+          <div className="space-y-5 md:space-y-6 lg:col-span-7">
             {portfolioData.bio.map((paragraph, index) => (
               <motion.p
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.12 }}
-                className="text-lg leading-relaxed text-muted"
+                className="text-base leading-relaxed text-muted md:text-lg"
               >
                 {paragraph}
               </motion.p>
@@ -58,7 +52,7 @@ export const About: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="flex items-center gap-3 pt-2"
             >
-              <span className="h-px w-10 bg-gradient-to-r from-accent-1 to-transparent" />
+              <span className="h-px w-10 bg-accent-1" />
               <span className="font-mono text-sm text-accent-1">{portfolioData.role}</span>
             </motion.div>
           </div>
@@ -70,10 +64,9 @@ export const About: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="lg:col-span-5"
           >
-            <GlassCard glow hover className="p-8">
+            <GlassCard glow hover className="p-6 md:p-8">
               <div className="flex flex-col items-center text-center">
                 <div className="relative mb-5">
-                  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent-1 via-accent-2 to-accent-3 opacity-70 blur-md" />
                   <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-border bg-void">
                     <span className="font-display text-4xl font-bold text-content">L</span>
                   </div>
@@ -108,10 +101,10 @@ export const About: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 grid grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-surface/40 backdrop-blur-sm"
+          className="mt-12 grid grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-surface/40 backdrop-blur-sm md:mt-16"
         >
           {STATS.map((stat) => (
-            <div key={stat.label} className="px-4 py-8 text-center">
+            <div key={stat.label} className="px-3 py-6 text-center md:px-4 md:py-8">
               <div className="font-display text-3xl font-bold text-content md:text-4xl">
                 {stat.value}
               </div>

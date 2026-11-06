@@ -65,7 +65,11 @@ const EVENT_COUNTS = portfolioData.events.reduce<Record<string, number>>((acc, e
   return acc;
 }, {});
 
-const EventCard: React.FC<{ event: Event; index: number }> = ({ event, index }) => {
+const EventCard: React.FC<{ event: Event; index: number; className?: string }> = ({
+  event,
+  index,
+  className,
+}) => {
   const meta = TYPE_META[event.type];
 
   return (
@@ -74,7 +78,10 @@ const EventCard: React.FC<{ event: Event; index: number }> = ({ event, index }) 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-1/40 hover:bg-surface/80"
+      className={cn(
+        'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-1/40 hover:bg-surface/80 md:p-6',
+        className
+      )}
     >
       <div className="relative flex items-center justify-between gap-3">
         <span className={cn('flex h-11 w-11 items-center justify-center rounded-xl border', meta.chip, meta.iconClass)}>
@@ -122,11 +129,15 @@ const EventCard: React.FC<{ event: Event; index: number }> = ({ event, index }) 
 
 export const Events: React.FC = () => {
   const [filter, setFilter] = useState<'all' | Event['type']>('all');
+  const [showAll, setShowAll] = useState(false);
 
   const filteredEvents = useMemo(() => {
     if (filter === 'all') return portfolioData.events;
     return portfolioData.events.filter((event) => event.type === filter);
   }, [filter]);
+
+  const collapsedCount = 4;
+  const hasMore = filteredEvents.length > collapsedCount;
 
   const eventTypes = [
     'all',
@@ -134,13 +145,7 @@ export const Events: React.FC = () => {
   ] as const;
 
   return (
-    <section id="events" className="relative overflow-hidden px-4 py-32 md:px-8">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-40 top-1/3 h-96 w-96 rounded-full bg-accent-1/10 blur-[150px]" />
-        <div className="absolute -left-40 bottom-1/4 h-96 w-96 rounded-full bg-accent-3/10 blur-[150px]" />
-      </div>
-
+    <section id="events" className="relative overflow-hidden px-4 py-24 md:px-8 md:py-32">
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           title="Events & Achievements"
@@ -149,7 +154,7 @@ export const Events: React.FC = () => {
         />
 
         {/* Category filters */}
-        <div className="mb-12 flex flex-wrap items-center gap-2">
+        <div className="mb-8 flex flex-wrap items-center gap-2 md:mb-12">
           {eventTypes.map((type) => {
             const isActive = filter === type;
             const label = type === 'all' ? 'All' : TYPE_META[type].label;
@@ -159,7 +164,10 @@ export const Events: React.FC = () => {
               <button
                 key={type}
                 type="button"
-                onClick={() => setFilter(type)}
+                onClick={() => {
+                  setFilter(type);
+                  setShowAll(false);
+                }}
                 className={cn(
                   'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
                   isActive
@@ -177,11 +185,28 @@ export const Events: React.FC = () => {
         </div>
 
         {/* Events grid */}
-        <div key={filter} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div key={filter} className="grid gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {filteredEvents.map((event, index) => (
-            <EventCard key={event.id} event={event} index={index} />
+            <EventCard
+              key={event.id}
+              event={event}
+              index={index}
+              className={cn(!showAll && index >= collapsedCount && 'hidden md:flex')}
+            />
           ))}
         </div>
+
+        {hasMore && (
+          <div className="mt-6 text-center md:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAll((value) => !value)}
+              className="rounded-full border border-border bg-surface/60 px-5 py-2.5 text-sm font-medium text-accent-1 transition-colors hover:border-accent-1/40 hover:text-content"
+            >
+              {showAll ? 'Show less' : `Show all ${filteredEvents.length} events`}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

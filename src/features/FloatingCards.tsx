@@ -200,8 +200,7 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
             className={`w-full h-full p-4 flex flex-col justify-end rounded-b-lg transition-all duration-300
               ${isActive ? 'opacity-100' : 'opacity-70'}`}
             style={{
-              background:
-                'linear-gradient(to top, rgba(3, 7, 18, 0.95) 0%, rgba(3, 7, 18, 0.75) 100%)',
+              background: 'rgba(3, 7, 18, 0.9)',
             }}
           >
             <span className="text-accent-2 font-mono text-xs mb-1">{project.year}</span>
@@ -270,7 +269,7 @@ export const FloatingCards: React.FC<FloatingCardsProps> = ({
   };
 
   return (
-    <div className={`w-full h-[500px] relative ${className}`}>
+    <div className={`relative h-[340px] w-full md:h-[500px] ${className}`}>
       <Canvas
         dpr={[1, 1.5]}
         frameloop="demand"
