@@ -45,12 +45,9 @@ export const App: React.FC = () => {
         
         {/* Footer */}
         <footer className="py-8 px-4 border-t border-border">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm">
+          <div className="max-w-7xl mx-auto flex items-center justify-center">
+            <p className="text-muted text-sm">
               © {new Date().getFullYear()} Levyn. All rights reserved.
-            </p>
-            <p className="text-slate-500 text-sm font-mono">
-              Built with React, Three.js & Tailwind CSS
             </p>
           </div>
         </footer>
