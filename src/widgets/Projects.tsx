@@ -134,7 +134,7 @@ export const Projects: React.FC = () => {
         >
           <FloatingCards
             projects={portfolioData.projects.filter((p) =>
-              ['agrigrid', 'ecowave', 'taskflow', 'attendease', 'primestone', 'afriarch'].includes(p.id)
+              ['agrigrid', 'taskflow', 'attendease', 'primestone', 'afriarch'].includes(p.id)
             )}
           />
         </motion.div>

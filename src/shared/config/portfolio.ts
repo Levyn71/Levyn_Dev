@@ -98,32 +98,6 @@ export const portfolioData: PortfolioData = PortfolioSchema.parse({
       year: 2023,
     },
     {
-      id: 'flux-generative',
-      title: 'Flux Generative',
-      description: 'AI-powered generative art platform. Users create unique artwork using custom diffusion models, mint as NFTs, and trade in the marketplace.',
-      thumbnail: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&q=80',
-      tags: ['Python', 'React', 'PyTorch', 'Solidity', 'Web3'],
-      links: {
-        demo: 'https://flux-art.vercel.app',
-        github: 'https://github.com/levyn/flux-generative',
-      },
-      featured: true,
-      year: 2024,
-    },
-    {
-      id: 'echo-spatial',
-      title: 'Echo Spatial',
-      description: 'Spatial audio visualizer that transforms music into immersive 3D experiences. Web Audio API integration with Three.js particle systems.',
-      thumbnail: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
-      tags: ['Three.js', 'Web Audio API', 'React', 'GLSL'],
-      links: {
-        demo: 'https://echo-spatial.vercel.app',
-        github: 'https://github.com/levyn/echo-spatial',
-      },
-      featured: false,
-      year: 2023,
-    },
-    {
       id: 'agrigrid',
       title: 'AgriGrid',
       description: 'AgriGrid is a cross-border agricultural intelligence & trade infrastructure platform connecting farmers, buyers, and transporters across the continent.',
@@ -135,19 +109,6 @@ export const portfolioData: PortfolioData = PortfolioSchema.parse({
       },
       featured: true,
       year: 2024,
-    },
-    {
-      id: 'ecowave',
-      title: 'Ecowave',
-      description: 'Ecowave is an innovative digital platform that connects eco-conscious travellers with verified local guides, artisans, cultural and eco-activities.',
-      thumbnail: '/projects/Ecowave.png',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
-      links: {
-        demo: 'https://www.ecowavetours.com',
-        github: 'https://github.com/levyn/ecowave',
-      },
-      featured: true,
-      year: 2025,
     },
     {
       id: 'taskflow',
@@ -205,54 +166,23 @@ export const portfolioData: PortfolioData = PortfolioSchema.parse({
   experience: [
     {
       id: 'exp-1',
-      role: 'Senior Creative Developer',
-      company: 'Flux Studio',
+      role: 'Software Developer',
+      company: 'Freelancer',
       location: 'Remote',
       period: {
-        start: '2022-03',
+        start: '2024-09',
         current: true,
       },
       description: [
-        'Lead development of immersive web experiences for Fortune 500 clients',
-        'Architected and shipped 15+ production 3D experiences using React Three Fiber',
-        'Mentored team of 4 developers on WebGL best practices and performance optimization',
-        'Reduced bundle sizes by 35% through strategic code splitting and lazy loading',
+        'Design and developing scalable web applications and websites for clients and personal projects, emphasizing performance, usability, and maintainability',
+        'Built responsive, cross-browser compatible user interfaces using React.js, HTML5, CSS3, and Tailwind CSS',
+        'Developed backend functionality and APIs using Node.js, Express.js, and Next.js to support dynamic, data-driven applications',
+        'Translated client and project requirements into functional, user-centered digital solutions',
+        'Managed the full software development lifecycle, including planning, development, testing, deployment, and iterative improvement',
+        'Optimized application performance and code quality through best practices, modular design, and efficient debugging',
+        'Utilized Git and GitHub for version control, collaboration, and structured code management',
       ],
-      technologies: ['React', 'Three.js', 'GSAP', 'WebGL', 'TypeScript'],
-    },
-    {
-      id: 'exp-2',
-      role: 'Frontend Engineer',
-      company: 'Nebula Systems',
-      location: 'San Francisco, CA',
-      period: {
-        start: '2020-06',
-        end: '2022-02',
-      },
-      description: [
-        'Developed interactive data visualization tools processing 10M+ data points',
-        'Implemented real-time collaboration features using WebSockets and CRDTs',
-        'Built accessible component library used across 8 product teams',
-        'Achieved 99.9% Lighthouse performance score on all shipped features',
-      ],
-      technologies: ['React', 'D3.js', 'WebSockets', 'Node.js', 'GraphQL'],
-    },
-    {
-      id: 'exp-3',
-      role: 'Creative Technologist',
-      company: 'Aether Labs',
-      location: 'New York, NY',
-      period: {
-        start: '2018-09',
-        end: '2020-05',
-      },
-      description: [
-        'Created award-winning interactive installations for major brand activations',
-        'Developed generative art systems for digital marketing campaigns',
-        'Built internal tools for rapid prototyping of 3D experiences',
-        'Collaborated with design teams to bridge creative vision and technical execution',
-      ],
-      technologies: ['Three.js', 'Processing', 'OpenGL', 'Unity', 'Python'],
+      technologies: ['React', 'Node.js', 'TypeScript', 'Next.js', 'MySQL'],
     },
   ],
   events: [
@@ -333,7 +263,7 @@ export const portfolioData: PortfolioData = PortfolioSchema.parse({
   ],
   social: [
     { platform: 'github', url: 'https://github.com/Levyn71', handle: '@Levyn71' },
-    { platform: 'linkedin', url: 'https://linkedin.com/in/levyn', handle: '/in/levyn' },
+    { platform: 'linkedin', url: 'https://www.linkedin.com/in/levyn-benjamin-263186367/', handle: '/in/levyn-benjamin-263186367' },
     { platform: 'twitter', url: 'https://twitter.com/levyndev', handle: '@levyndev' },
     { platform: 'dribbble', url: 'https://dribbble.com/levyn', handle: '@levyn' },
     { platform: 'email', url: 'mailto:levynbenjamin@gmail.com', handle: 'levynbenjamin@gmail.com' },
@@ -359,3 +289,6 @@ export const ANIMATION_CONFIG = {
   duration: 0.6,
   stagger: 0.08,
 } as const;
+
+// Primary channels surfaced in the Hero and Contact sections; the full list lives in Contact.
+export const PRIMARY_SOCIAL_PLATFORMS = new Set(['github', 'linkedin', 'email']);

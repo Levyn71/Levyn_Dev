@@ -4,6 +4,7 @@
  */
 
 export { cn, formatDate, formatPeriod } from './utils';
+export { sendContactEmail } from './email';
 export { ThreeUtils } from './three-utils';
 export { GSAPHelpers } from './gsap-helpers';
 export { MathUtils } from './math-utils';

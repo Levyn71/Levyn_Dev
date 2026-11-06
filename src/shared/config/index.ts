@@ -3,4 +3,4 @@
  * @description Config barrel export
  */
 
-export { portfolioData, sectionMeta, ANIMATION_CONFIG } from './portfolio';
+export { portfolioData, sectionMeta, ANIMATION_CONFIG, PRIMARY_SOCIAL_PLATFORMS } from './portfolio';

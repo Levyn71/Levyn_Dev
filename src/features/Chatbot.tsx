@@ -56,7 +56,7 @@ export const Chatbot: React.FC = () => {
     const lowerMsg = userMessage.toLowerCase();
     
     if (lowerMsg.includes('project') || lowerMsg.includes('work')) {
-      return "I've worked on several exciting projects including AgriGrid (agricultural intelligence platform), Ecowave (eco-tourism platform), TaskFlow (project management tool), AttendEase (event management), Primestone Real Estate, and AfriArch (architectural visualization). Check out the Projects section for more details!";
+      return "I've worked on several exciting projects including AgriGrid (agricultural intelligence platform), TaskFlow (project management tool), AttendEase (event management), Primestone Real Estate, and AfriArch (architectural visualization). Check out the Projects section for more details!";
     }
     
     if (lowerMsg.includes('skill') || lowerMsg.includes('tech') || lowerMsg.includes('stack')) {
@@ -64,7 +64,7 @@ export const Chatbot: React.FC = () => {
     }
     
     if (lowerMsg.includes('experience') || lowerMsg.includes('work history') || lowerMsg.includes('job')) {
-      return "I'm currently a Senior Creative Developer at Flux Studio (Remote, 2022-present). I have 2+ years of experience building innovative web applications, 3D experiences, and creative digital solutions. Check the Experience section for my full timeline!";
+      return "I'm currently a Software Developer working as a freelancer (Remote, since 2024). I build scalable web applications, 3D experiences, and creative digital solutions. Check the Experience section for my full timeline!";
     }
     
     if (lowerMsg.includes('contact') || lowerMsg.includes('email') || lowerMsg.includes('reach')) {
@@ -126,50 +126,62 @@ export const Chatbot: React.FC = () => {
         {isOpen ? (
           <motion.div
             key="chat-window"
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="bg-surface/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl overflow-hidden"
-            style={{ width: '360px', maxHeight: '600px' }}
+            role="dialog"
+            aria-label="Levyn's assistant"
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 24, scale: 0.96 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="flex w-[min(92vw,380px)] flex-col overflow-hidden rounded-3xl border border-border bg-surface/90 shadow-2xl shadow-black/40 backdrop-blur-xl"
+            style={{ maxHeight: 'min(600px, 80vh)' }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-accent-1 to-accent-2 p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <span className="text-xl">🤖</span>
+            <div className="flex items-center gap-3 border-b border-border bg-surface/60 px-4 py-3">
+              <div className="relative shrink-0">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 font-display text-sm font-bold text-white">
+                  L
                 </div>
-                <div>
-                  <h3 className="text-white font-semibold">Levyn Bot</h3>
-                  <p className="text-white/70 text-xs">Online</p>
-                </div>
+                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-surface bg-green-400" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="truncate font-display text-sm font-semibold text-white">
+                  Levyn's Assistant
+                </h3>
+                <p className="font-mono text-[11px] text-green-400">Online</p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white/70 hover:text-white transition-colors p-1"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
                 aria-label="Close chat"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
             {/* Messages */}
-            <div className="p-4 space-y-4 max-h-[360px] overflow-y-auto scrollbar-thin scrollbar-thumb-accent-1 scrollbar-track-transparent">
+            <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4" aria-live="polite">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
-                  initial={{ opacity: 0, x: message.type === 'user' ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className={`flex items-end gap-2 ${
+                    message.type === 'user' ? 'justify-end' : 'justify-start'
+                  }`}
                 >
+                  {message.type === 'bot' && (
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 text-[11px] font-bold text-white">
+                      L
+                    </div>
+                  )}
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                    className={`max-w-[78%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       message.type === 'user'
-                        ? 'bg-accent-1 text-white rounded-br-sm'
-                        : 'bg-surface-light text-slate-200 border border-border rounded-bl-sm'
+                        ? 'rounded-br-md bg-accent-1 text-white'
+                        : 'rounded-bl-md border border-border bg-surface-light/70 text-slate-200'
                     }`}
                   >
                     {message.text}
@@ -179,14 +191,17 @@ export const Chatbot: React.FC = () => {
               
               {isTyping && (
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex justify-start"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-end gap-2"
                 >
-                  <div className="bg-surface-light border border-border rounded-2xl rounded-bl-sm p-3 flex items-center gap-1">
-                    <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 text-[11px] font-bold text-white">
+                    L
+                  </div>
+                  <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-border bg-surface-light/70 px-3.5 py-3">
+                    <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" style={{ animationDelay: '0ms' }} />
+                    <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" style={{ animationDelay: '150ms' }} />
+                    <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" style={{ animationDelay: '300ms' }} />
                   </div>
                 </motion.div>
               )}
@@ -195,12 +210,12 @@ export const Chatbot: React.FC = () => {
 
             {/* Quick Replies */}
             {messages.length < 3 && (
-              <div className="px-4 pb-2 flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 border-t border-border/60 px-4 py-3">
                 {QUICK_REPLIES.map((reply) => (
                   <button
                     key={reply}
                     onClick={() => handleSendMessage(reply)}
-                    className="text-xs px-3 py-1.5 bg-surface-light hover:bg-accent-1/20 text-slate-300 hover:text-accent-1 border border-border rounded-full transition-all"
+                    className="rounded-full border border-border bg-surface-light/50 px-3 py-1.5 text-xs text-slate-300 transition-all hover:border-accent-1/50 hover:text-white"
                   >
                     {reply}
                   </button>
@@ -209,8 +224,8 @@ export const Chatbot: React.FC = () => {
             )}
 
             {/* Input */}
-            <div className="p-4 border-t border-border bg-surface">
-              <div className="flex items-center gap-2">
+            <div className="border-t border-border bg-surface/60 p-3">
+              <div className="flex items-center gap-2 rounded-2xl border border-border bg-void/40 px-3 transition-colors focus-within:border-accent-1/60">
                 <input
                   ref={inputRef}
                   type="text"
@@ -218,15 +233,15 @@ export const Chatbot: React.FC = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
-                  className="flex-1 bg-surface-light border border-border rounded-full px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-accent-1 transition-colors"
+                  className="flex-1 bg-transparent py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none"
                 />
                 <button
                   onClick={() => handleSendMessage(inputValue)}
                   disabled={!inputValue.trim()}
-                  className="w-10 h-10 rounded-full bg-accent-1 hover:bg-accent-1/80 disabled:bg-slate-700 disabled:cursor-not-allowed flex items-center justify-center transition-all"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent-1 text-white transition-all hover:bg-accent-1-dark disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-500"
                   aria-label="Send message"
                 >
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 </button>
@@ -239,20 +254,24 @@ export const Chatbot: React.FC = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="w-14 h-14 rounded-full bg-gradient-to-r from-accent-1 to-accent-2 shadow-lg shadow-accent-1/30 flex items-center justify-center group"
+            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 text-white shadow-lg shadow-accent-1/30"
             aria-label="Open chat"
           >
-            <motion.span
-              className="text-2xl"
-              animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
-              transition={{ duration: 1, repeat: Infinity, repeatDelay: 3 }}
-            >
-              💬
-            </motion.span>
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-surface" />
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+              />
+            </svg>
+            <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-void bg-green-400" />
+            </span>
           </motion.button>
         )}
       </AnimatePresence>

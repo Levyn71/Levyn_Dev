@@ -1,41 +1,30 @@
 /**
  * @module Hero
- * @description Hero section with 3D scene and animated text
- * @performance Optimized for initial page load
+ * @description Hero section with animated headline and primary CTAs
+ * @performance Optimized for initial load, entrance animation gated by useInView
  */
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { Hero3DScene } from '@/features';
-import { Button } from '@/shared/ui';
-import { portfolioData } from '@/shared/config';
-import { useAppStore, selectCursor } from '@/app/store';
+import { Button, SocialIcon } from '@/shared/ui';
+import { portfolioData, PRIMARY_SOCIAL_PLATFORMS } from '@/shared/config';
 import { useInView } from '@/shared/hooks';
 
 export const Hero: React.FC = () => {
-  const cursor = useAppStore(selectCursor);
   const containerRef = useRef<HTMLElement>(null);
   const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.1 });
 
   useEffect(() => {
     if (!isInView) return;
 
-    // Animate entrance
     const ctx = gsap.context(() => {
-      gsap.from('.hero-title', {
-        y: 50,
+      gsap.from('.hero-animate', {
+        y: 40,
         opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'power3.out',
-      });
-
-      gsap.from('.hero-cta', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.6,
+        duration: 0.9,
+        stagger: 0.12,
+        delay: 0.15,
         ease: 'power3.out',
       });
     }, containerRef);
@@ -47,88 +36,109 @@ export const Hero: React.FC = () => {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-28 pb-24"
     >
-      {/* 3D Background */}
-      <div ref={ref} className="absolute inset-0">
-        <Hero3DScene mouseX={cursor.normalizedX} mouseY={cursor.normalizedY} />
+      {/* Ambient gradient glows */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-32 -top-40 h-[34rem] w-[34rem] rounded-full bg-accent-1/20 blur-[130px]" />
+        <div className="absolute -right-32 top-1/4 h-[30rem] w-[30rem] rounded-full bg-accent-2/15 blur-[130px]" />
+        <div className="absolute -bottom-40 left-1/2 h-[26rem] w-[42rem] -translate-x-1/2 rounded-full bg-accent-3/10 blur-[150px]" />
       </div>
 
-      {/* Content overlay */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-6"
-        >
-          <motion.span
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent-1/20 text-accent-1 font-mono text-base font-semibold border-2 border-accent-1/40 shadow-[0_0_20px_rgba(99,102,241,0.3)] backdrop-blur-sm"
-            animate={{
-              boxShadow: [
-                '0 0 20px rgba(99,102,241,0.3)',
-                '0 0 40px rgba(99,102,241,0.5)',
-                '0 0 20px rgba(99,102,241,0.3)',
-              ],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-            Available for new projects
-          </motion.span>
-        </motion.div>
+      {/* Faint grid backdrop + vignette */}
+      <div className="hero-grid pointer-events-none absolute inset-0 opacity-60" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/30 via-transparent to-void" />
 
-        <h1 className="hero-title font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6">
-          <span className="block">{portfolioData.name}</span>
-          <span className="block mt-2 bg-gradient-to-r from-accent-1 via-accent-2 to-accent-3 bg-clip-text text-transparent">
-            {portfolioData.role}
-          </span>
+      {/* Content */}
+      <div ref={ref} className="relative z-10 mx-auto w-full max-w-5xl text-center">
+        <h1 className="hero-animate font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          {portfolioData.name}
         </h1>
 
-        <p className="hero-title text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="hero-animate gradient-text-animate mx-auto mt-5 max-w-3xl font-display text-xl font-semibold leading-snug sm:text-2xl md:text-3xl">
+          {portfolioData.role}
+        </p>
+
+        <p className="hero-animate mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 md:text-lg">
           {portfolioData.tagline}
         </p>
 
-        <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* Primary actions */}
+        <div className="hero-animate mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button
             size="lg"
             magnetic
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group w-full sm:w-auto"
+            onClick={() =>
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+            }
           >
-            View Projects
+            <span className="inline-flex items-center gap-2">
+              View Projects
+              <svg
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 12h14M13 6l6 6-6 6"
+                />
+              </svg>
+            </span>
           </Button>
           <Button
             variant="outline"
             size="lg"
             magnetic
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="w-full sm:w-auto"
+            onClick={() =>
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+            }
           >
             Get in Touch
           </Button>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-slate-600 flex justify-center pt-2">
-            <motion.div
-              className="w-1.5 h-1.5 rounded-full bg-accent-1"
-              animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </div>
-        </motion.div>
+        {/* Social links */}
+        <div className="hero-animate mt-12 flex items-center justify-center gap-3">
+          {portfolioData.social
+            .filter((link) => PRIMARY_SOCIAL_PLATFORMS.has(link.platform))
+            .map((link) => (
+              <a
+                key={link.platform}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${link.platform} — ${link.handle}`}
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/60 text-slate-400 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-1/50 hover:text-white"
+              >
+                <SocialIcon platform={link.platform} />
+              </a>
+            ))}
+        </div>
       </div>
 
-      {/* Gradient overlay at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent" />
+      {/* Scroll cue */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        aria-hidden="true"
+      >
+        <span className="flex h-9 w-5 justify-center rounded-full border border-slate-600 pt-1.5">
+          <motion.span
+            className="h-1.5 w-1 rounded-full bg-accent-1"
+            animate={{ y: [0, 10, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </span>
+      </motion.div>
     </section>
   );
 };

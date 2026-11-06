@@ -20,7 +20,7 @@ export function formatDate(date: string): string {
 export function formatPeriod(start: string, end?: string, current?: boolean): string {
   const startFormatted = formatDate(start);
   const endFormatted = current ? 'Present' : end ? formatDate(end) : 'Present';
-  return `${startFormatted} - ${endFormatted}`;
+  return `${startFormatted} – ${endFormatted}`;
 }
 
 export function debounce<T extends (...args: Parameters<T>) => ReturnType<T>>(
