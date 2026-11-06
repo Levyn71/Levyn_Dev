@@ -9,6 +9,7 @@ import { PortfolioSchema, type PortfolioData } from '@/types';
 export const portfolioData: PortfolioData = PortfolioSchema.parse({
   name: 'Levyn Benjamin',
   role: 'Software Developer, Product Designer & Tech Entrepreneur',
+  roles: ['Software Developer', 'Product Designer', '& Tech Entrepreneur'],
   tagline: 'Crafting immersive digital experiences at the intersection of code and design',
   bio: [
     'I am a creative developer specializing in building immersive web experiences that push the boundaries of what\'s possible in the browser. With expertise in Three.js, React, and modern web technologies, I transform ideas into interactive realities.',

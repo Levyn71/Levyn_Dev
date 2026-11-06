@@ -7,7 +7,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { Button, SocialIcon } from '@/shared/ui';
+import { Button, SocialIcon, Typewriter } from '@/shared/ui';
 import { portfolioData, PRIMARY_SOCIAL_PLATFORMS } from '@/shared/config';
 import { useInView } from '@/shared/hooks';
 
@@ -51,15 +51,19 @@ export const Hero: React.FC = () => {
 
       {/* Content */}
       <div ref={ref} className="relative z-10 mx-auto w-full max-w-5xl text-center">
-        <h1 className="hero-animate font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="hero-animate font-display text-5xl font-bold leading-[0.95] tracking-tight text-content sm:text-6xl md:text-7xl lg:text-8xl">
           {portfolioData.name}
         </h1>
 
-        <p className="hero-animate gradient-text-animate mx-auto mt-5 max-w-3xl font-display text-xl font-semibold leading-snug sm:text-2xl md:text-3xl">
-          {portfolioData.role}
+        <p className="hero-animate mx-auto mt-5 max-w-3xl font-display text-xl font-semibold leading-snug sm:text-2xl md:text-3xl">
+          <Typewriter
+            phrases={portfolioData.roles}
+            textClassName="gradient-text-animate"
+            penClassName="text-accent-1"
+          />
         </p>
 
-        <p className="hero-animate mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 md:text-lg">
+        <p className="hero-animate mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
           {portfolioData.tagline}
         </p>
 
@@ -115,7 +119,7 @@ export const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${link.platform} — ${link.handle}`}
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/60 text-slate-400 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-1/50 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/60 text-muted backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-1/50 hover:text-content"
               >
                 <SocialIcon platform={link.platform} />
               </a>

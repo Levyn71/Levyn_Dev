@@ -68,6 +68,7 @@ export const SocialLinkSchema = z.object({
 export const PortfolioSchema = z.object({
   name: z.string(),
   role: z.string(),
+  roles: z.array(z.string()).min(1),
   tagline: z.string(),
   bio: z.array(z.string()),
   skills: z.array(SkillSchema),
