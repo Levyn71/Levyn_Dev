@@ -36,8 +36,8 @@ export const GlassCard = React.memo(function GlassCard({
         boxShadow: glow ? `0 0 40px ${glowColor}` : undefined,
       }}
     >
-      {/* Glass shimmer effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+      {/* Glass sheen */}
+      <div className="absolute inset-0 bg-white/5 pointer-events-none" />
       
       {/* Content */}
       <div className="relative z-10">{children}</div>

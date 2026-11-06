@@ -53,10 +53,6 @@ export const Button = React.memo(function Button({
       className={baseStyles}
       {...props}
     >
-      {/* Glow effect for primary */}
-      {variant === 'primary' && (
-        <span className="absolute inset-0 rounded-xl bg-accent-1/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-      )}
       <span className="relative z-10">{children}</span>
     </button>
   );

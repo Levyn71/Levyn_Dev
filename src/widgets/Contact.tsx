@@ -50,12 +50,6 @@ export const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="relative overflow-hidden px-4 py-32 md:px-8">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-accent-1/10 blur-[150px]" />
-        <div className="absolute -left-40 bottom-1/4 h-96 w-96 rounded-full bg-accent-2/10 blur-[150px]" />
-      </div>
-
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           title="Get in Touch"

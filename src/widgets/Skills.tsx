@@ -15,15 +15,15 @@ type SkillCategory = Skill['category'];
 
 interface CategoryMeta {
   label: string;
-  gradient: string;
+  color: string;
 }
 
 const CATEGORY_META: Record<SkillCategory, CategoryMeta> = {
-  frontend: { label: 'Frontend', gradient: 'from-accent-1 to-accent-2' },
-  backend: { label: 'Backend', gradient: 'from-emerald-400 to-teal-500' },
-  '3d': { label: '3D & Graphics', gradient: 'from-violet-500 to-accent-3' },
-  design: { label: 'Design', gradient: 'from-amber-400 to-accent-3' },
-  tools: { label: 'Tools', gradient: 'from-slate-400 to-slate-500' },
+  frontend: { label: 'Frontend', color: 'bg-accent-1' },
+  backend: { label: 'Backend', color: 'bg-emerald-400' },
+  '3d': { label: '3D & Graphics', color: 'bg-violet-500' },
+  design: { label: 'Design', color: 'bg-amber-400' },
+  tools: { label: 'Tools', color: 'bg-slate-400' },
 };
 
 const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', '3d', 'design', 'tools'];
@@ -76,14 +76,6 @@ const CategoryTile: React.FC<CategoryTileProps> = ({
         className
       )}
     >
-      {/* Accent glow */}
-      <div
-        className={cn(
-          'pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-40',
-          meta.gradient
-        )}
-      />
-
       <div className="relative flex items-center justify-between">
         <h3 className="font-display text-lg font-semibold text-content">{meta.label}</h3>
         <span className="font-mono text-xs text-subtle">{skills.length} skills</span>
@@ -95,7 +87,7 @@ const CategoryTile: React.FC<CategoryTileProps> = ({
             key={skill.name}
             className="inline-flex items-center gap-1.5 rounded-full border border-border bg-void/40 px-3 py-1.5 text-sm text-muted"
           >
-            <span className={cn('h-1.5 w-1.5 rounded-full bg-gradient-to-br', meta.gradient)} />
+            <span className={cn('h-1.5 w-1.5 rounded-full', meta.color)} />
             {skill.name}
           </span>
         ))}
@@ -112,7 +104,7 @@ const CategoryTile: React.FC<CategoryTileProps> = ({
             whileInView={{ width: `${average}%` }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: 'easeOut', delay }}
-            className={cn('h-full rounded-full bg-gradient-to-r', meta.gradient)}
+            className={cn('h-full rounded-full', meta.color)}
           />
         </div>
       </div>
@@ -123,12 +115,6 @@ const CategoryTile: React.FC<CategoryTileProps> = ({
 export const Skills: React.FC = () => {
   return (
     <section id="skills" className="relative overflow-hidden px-4 py-32 md:px-8">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-accent-2/10 blur-[150px]" />
-        <div className="absolute -left-40 bottom-1/4 h-96 w-96 rounded-full bg-accent-1/10 blur-[150px]" />
-      </div>
-
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           title="Skills & Expertise"

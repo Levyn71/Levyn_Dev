@@ -36,7 +36,7 @@ export const Navigation: React.FC = () => {
       {/* Scroll progress bar */}
       <div className="fixed top-0 left-0 right-0 z-[100] h-1 bg-transparent">
         <motion.div
-          className="h-full bg-gradient-to-r from-accent-1 to-accent-2"
+          className="h-full bg-accent-1"
           style={{ scaleX: scroll.progress, transformOrigin: 'left' }}
         />
       </div>

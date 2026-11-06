@@ -81,7 +81,7 @@ export const AssetLoader: React.FC<AssetLoaderProps> = ({ children }) => {
               
               {/* Inner pulsing circle */}
               <motion.div
-                className="absolute inset-4 rounded-full bg-gradient-to-br from-accent-1 to-accent-2"
+                className="absolute inset-4 rounded-full bg-accent-1"
                 animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
@@ -97,7 +97,7 @@ export const AssetLoader: React.FC<AssetLoaderProps> = ({ children }) => {
             {/* Progress bar */}
             <div className="w-64 h-1 bg-surface rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-accent-1 to-accent-2 rounded-full"
+                className="h-full bg-accent-1 rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}

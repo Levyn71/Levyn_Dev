@@ -38,17 +38,6 @@ export const Hero: React.FC = () => {
       ref={containerRef}
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-28 pb-24"
     >
-      {/* Ambient gradient glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 -top-40 h-[34rem] w-[34rem] rounded-full bg-accent-1/20 blur-[130px]" />
-        <div className="absolute -right-32 top-1/4 h-[30rem] w-[30rem] rounded-full bg-accent-2/15 blur-[130px]" />
-        <div className="absolute -bottom-40 left-1/2 h-[26rem] w-[42rem] -translate-x-1/2 rounded-full bg-accent-3/10 blur-[150px]" />
-      </div>
-
-      {/* Faint grid backdrop + vignette */}
-      <div className="hero-grid pointer-events-none absolute inset-0 opacity-60" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/30 via-transparent to-void" />
-
       {/* Content */}
       <div ref={ref} className="relative z-10 mx-auto w-full max-w-5xl text-center">
         <h1 className="hero-animate font-display text-5xl font-bold leading-[0.95] tracking-tight text-content sm:text-6xl md:text-7xl lg:text-8xl">
@@ -58,7 +47,7 @@ export const Hero: React.FC = () => {
         <p className="hero-animate mx-auto mt-5 max-w-3xl font-display text-xl font-semibold leading-snug sm:text-2xl md:text-3xl">
           <Typewriter
             phrases={portfolioData.roles}
-            textClassName="gradient-text-animate"
+            textClassName="text-accent-1"
             penClassName="text-accent-1"
           />
         </p>

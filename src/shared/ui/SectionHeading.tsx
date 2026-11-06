@@ -72,7 +72,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       {/* Animated underline */}
       <div
         className={cn(
-          'h-1 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full mt-6',
+          'h-1 bg-accent-1 rounded-full mt-6',
           'transition-all duration-700 delay-300',
           align === 'center' ? 'mx-auto' : '',
           isInView ? 'w-24 opacity-100' : 'w-0 opacity-0'

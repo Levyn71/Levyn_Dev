@@ -138,7 +138,7 @@ export const Chatbot: React.FC = () => {
             {/* Header */}
             <div className="flex items-center gap-3 border-b border-border bg-surface/60 px-4 py-3">
               <div className="relative shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 font-display text-sm font-bold text-white">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-1 font-display text-sm font-bold text-white">
                   L
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-surface bg-green-400" />
@@ -173,7 +173,7 @@ export const Chatbot: React.FC = () => {
                   }`}
                 >
                   {message.type === 'bot' && (
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 text-[11px] font-bold text-white">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-1 text-[11px] font-bold text-white">
                       L
                     </div>
                   )}
@@ -195,7 +195,7 @@ export const Chatbot: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-end gap-2"
                 >
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 text-[11px] font-bold text-white">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-1 text-[11px] font-bold text-white">
                     L
                   </div>
                   <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-border bg-surface-light/70 px-3.5 py-3">
@@ -257,7 +257,7 @@ export const Chatbot: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-accent-1 to-accent-2 text-white shadow-lg shadow-accent-1/30"
+            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-accent-1 text-white shadow-lg shadow-accent-1/30"
             aria-label="Open chat"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
