@@ -200,14 +200,15 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
             className={`w-full h-full p-4 flex flex-col justify-end rounded-b-lg transition-all duration-300
               ${isActive ? 'opacity-100' : 'opacity-70'}`}
             style={{
-              background: 'linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.9) 100%)',
+              background:
+                'linear-gradient(to top, rgba(3, 7, 18, 0.95) 0%, rgba(3, 7, 18, 0.75) 100%)',
             }}
           >
             <span className="text-accent-2 font-mono text-xs mb-1">{project.year}</span>
             <h3 className="text-white font-display text-lg font-semibold mb-1">
               {project.title}
             </h3>
-            <p className="text-slate-400 text-xs line-clamp-2 mb-2">
+            <p className="text-white/70 text-xs line-clamp-2 mb-2">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-1">
@@ -305,7 +306,7 @@ export const FloatingCards: React.FC<FloatingCardsProps> = ({
           className="pointer-events-auto w-12 h-12 rounded-full bg-slate-800/80 hover:bg-accent-1/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 group"
           aria-label="Previous project"
         >
-          <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 text-content group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
@@ -314,7 +315,7 @@ export const FloatingCards: React.FC<FloatingCardsProps> = ({
           className="pointer-events-auto w-12 h-12 rounded-full bg-slate-800/80 hover:bg-accent-1/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 group"
           aria-label="Next project"
         >
-          <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 text-content group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>

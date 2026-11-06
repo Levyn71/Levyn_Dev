@@ -24,7 +24,7 @@ const TYPE_META: Record<Event['type'], EventTypeMeta> = {
   hackathon: { label: 'Hackathon', iconClass: 'text-emerald-300', chip: 'border-emerald-400/30 bg-emerald-400/10', tag: 'bg-emerald-400/10 text-emerald-300' },
   workshop: { label: 'Workshop', iconClass: 'text-accent-2', chip: 'border-accent-2/30 bg-accent-2/10', tag: 'bg-accent-2/10 text-accent-2' },
   conference: { label: 'Conference', iconClass: 'text-accent-3', chip: 'border-accent-3/30 bg-accent-3/10', tag: 'bg-accent-3/10 text-accent-3' },
-  other: { label: 'Milestone', iconClass: 'text-slate-300', chip: 'border-border bg-surface-light/50', tag: 'bg-surface-light/50 text-slate-300' },
+  other: { label: 'Milestone', iconClass: 'text-muted', chip: 'border-border bg-surface-light/50', tag: 'bg-surface-light/50 text-muted' },
 };
 
 const EVENT_ICONS: Record<Event['type'], JSX.Element> = {
@@ -85,21 +85,21 @@ const EventCard: React.FC<{ event: Event; index: number }> = ({ event, index }) 
         </span>
       </div>
 
-      <div className="relative mt-5 flex items-center gap-2 font-mono text-xs text-slate-500">
+      <div className="relative mt-5 flex items-center gap-2 font-mono text-xs text-subtle">
         <span className="text-accent-2">{formatDate(event.date)}</span>
         {event.location && (
           <>
-            <span className="text-slate-600">•</span>
-            <span className="truncate text-slate-400">{event.location}</span>
+            <span className="text-subtle">•</span>
+            <span className="truncate text-muted">{event.location}</span>
           </>
         )}
       </div>
 
-      <h3 className="relative mt-3 font-display text-lg font-semibold leading-snug text-white transition-colors group-hover:text-accent-1">
+      <h3 className="relative mt-3 font-display text-lg font-semibold leading-snug text-content transition-colors group-hover:text-accent-1">
         {event.title}
       </h3>
 
-      <p className="relative mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-slate-400">
+      <p className="relative mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">
         {event.description}
       </p>
 
@@ -163,12 +163,12 @@ export const Events: React.FC = () => {
                 className={cn(
                   'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
                   isActive
-                    ? 'bg-accent-1 text-white shadow-[0_0_20px_rgba(99,102,241,0.35)]'
-                    : 'border border-border bg-surface/60 text-slate-400 hover:border-accent-1/40 hover:text-white'
+                    ? 'bg-accent-1 text-content shadow-[0_0_20px_rgba(99,102,241,0.35)]'
+                    : 'border border-border bg-surface/60 text-muted hover:border-accent-1/40 hover:text-content'
                 )}
               >
                 {label}
-                <span className={cn('font-mono text-xs', isActive ? 'text-white/70' : 'text-slate-500')}>
+                <span className={cn('font-mono text-xs', isActive ? 'text-content/70' : 'text-subtle')}>
                   {count}
                 </span>
               </button>

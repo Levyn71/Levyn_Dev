@@ -26,9 +26,9 @@ export const Badge = React.memo(function Badge({
         'inline-flex items-center font-mono text-xs',
         'transition-all duration-200',
         {
-          'bg-surface-light/50 text-slate-300': variant === 'default',
+          'bg-surface-light/50 text-muted': variant === 'default',
           'bg-accent-1/20 text-accent-1 border border-accent-1/30': variant === 'accent',
-          'border border-border text-slate-400': variant === 'outline',
+          'border border-border text-muted': variant === 'outline',
           'px-2 py-1 rounded': size === 'sm',
           'px-3 py-1.5 rounded-md': size === 'md',
         },

@@ -44,7 +44,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
             )}
             {imageError && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-6xl font-display font-bold text-white/10">
+                <span className="text-6xl font-display font-bold text-content/10">
                   {project.title.charAt(0)}
                 </span>
               </div>
@@ -78,13 +78,13 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           {/* Project info */}
           <div className="p-6">
             <div className="flex items-start justify-between mb-3">
-              <h3 className="text-xl font-display font-semibold text-white group-hover:text-accent-1 transition-colors">
+              <h3 className="text-xl font-display font-semibold text-content group-hover:text-accent-1 transition-colors">
                 {project.title}
               </h3>
-              <span className="text-sm font-mono text-slate-400">{project.year}</span>
+              <span className="text-sm font-mono text-muted">{project.year}</span>
             </div>
 
-            <p className="text-slate-400 text-sm mb-4 line-clamp-2">
+            <p className="text-muted text-sm mb-4 line-clamp-2">
               {project.description}
             </p>
 
@@ -144,14 +144,14 @@ export const Projects: React.FC = () => {
           <button
             onClick={() => setFilter('all')}
             className={`px-4 py-2 rounded-lg font-medium transition-all
-              ${filter === 'all' ? 'bg-accent-1 text-white' : 'text-slate-400 hover:text-white'}`}
+              ${filter === 'all' ? 'bg-accent-1 text-white' : 'text-muted hover:text-content'}`}
           >
             All Projects
           </button>
           <button
             onClick={() => setFilter('featured')}
             className={`px-4 py-2 rounded-lg font-medium transition-all
-              ${filter === 'featured' ? 'bg-accent-1 text-white' : 'text-slate-400 hover:text-white'}`}
+              ${filter === 'featured' ? 'bg-accent-1 text-white' : 'text-muted hover:text-content'}`}
           >
             Featured
           </button>

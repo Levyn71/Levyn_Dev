@@ -39,16 +39,16 @@ const TimelineItem: React.FC<{ exp: ExperienceType; index: number; isLast: boole
             {formatPeriod(exp.period.start, exp.period.end, exp.period.current)}
           </span>
           
-          <h3 className="text-xl font-display font-semibold text-white mt-2">
+          <h3 className="text-xl font-display font-semibold text-content mt-2">
             {exp.role}
           </h3>
           
-          <p className="text-slate-400 font-medium">{exp.company}</p>
-          <p className="text-slate-500 text-sm">{exp.location}</p>
+          <p className="text-muted font-medium">{exp.company}</p>
+          <p className="text-subtle text-sm">{exp.location}</p>
           
           <ul className="mt-4 space-y-2">
             {exp.description.map((item, i) => (
-              <li key={i} className="text-slate-400 text-sm flex gap-2">
+              <li key={i} className="text-muted text-sm flex gap-2">
                 <span className="text-accent-1">-</span>
                 {item}
               </li>

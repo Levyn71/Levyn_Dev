@@ -46,7 +46,7 @@ export const About: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.12 }}
-                className="text-lg leading-relaxed text-slate-300"
+                className="text-lg leading-relaxed text-muted"
               >
                 {paragraph}
               </motion.p>
@@ -74,20 +74,20 @@ export const About: React.FC = () => {
               <div className="flex flex-col items-center text-center">
                 <div className="relative mb-5">
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent-1 via-accent-2 to-accent-3 opacity-70 blur-md" />
-                  <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/10 bg-void">
-                    <span className="font-display text-4xl font-bold text-white">L</span>
+                  <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-border bg-void">
+                    <span className="font-display text-4xl font-bold text-content">L</span>
                   </div>
                 </div>
 
-                <h3 className="font-display text-2xl font-semibold text-white">
+                <h3 className="font-display text-2xl font-semibold text-content">
                   {portfolioData.name}
                 </h3>
-                <p className="mt-1 font-mono text-sm text-slate-400">Creative Developer</p>
+                <p className="mt-1 font-mono text-sm text-muted">Creative Developer</p>
 
                 <div className="my-6 h-px w-full bg-border" />
 
                 <div className="w-full">
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
                     Core Stack
                   </span>
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -112,10 +112,10 @@ export const About: React.FC = () => {
         >
           {STATS.map((stat) => (
             <div key={stat.label} className="px-4 py-8 text-center">
-              <div className="font-display text-3xl font-bold text-white md:text-4xl">
+              <div className="font-display text-3xl font-bold text-content md:text-4xl">
                 {stat.value}
               </div>
-              <div className="mt-1 text-xs text-slate-400 md:text-sm">{stat.label}</div>
+              <div className="mt-1 text-xs text-muted md:text-sm">{stat.label}</div>
             </div>
           ))}
         </motion.div>

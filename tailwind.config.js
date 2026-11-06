@@ -4,11 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: '#030712',
-        surface: '#0f172a',
-        'surface-light': '#1e293b',
-        border: '#1e293b',
-        'border-light': '#334155',
+        // Theme-driven tokens (light/dark values live in src/index.css)
+        void: 'rgb(var(--c-void) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        'surface-light': 'rgb(var(--c-surface-light) / <alpha-value>)',
+        border: 'rgb(var(--c-border) / <alpha-value>)',
+        'border-light': 'rgb(var(--c-border-light) / <alpha-value>)',
+        content: 'rgb(var(--c-content) / <alpha-value>)',
+        muted: 'rgb(var(--c-muted) / <alpha-value>)',
+        subtle: 'rgb(var(--c-subtle) / <alpha-value>)',
+        // Brand accents (constant across themes)
         'accent-1': '#6366f1',
         'accent-1-dark': '#4338ca',
         'accent-2': '#06b6d4',

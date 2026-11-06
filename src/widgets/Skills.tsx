@@ -85,15 +85,15 @@ const CategoryTile: React.FC<CategoryTileProps> = ({
       />
 
       <div className="relative flex items-center justify-between">
-        <h3 className="font-display text-lg font-semibold text-white">{meta.label}</h3>
-        <span className="font-mono text-xs text-slate-500">{skills.length} skills</span>
+        <h3 className="font-display text-lg font-semibold text-content">{meta.label}</h3>
+        <span className="font-mono text-xs text-subtle">{skills.length} skills</span>
       </div>
 
       <div className="relative mt-5 flex flex-wrap gap-2">
         {skills.map((skill) => (
           <span
             key={skill.name}
-            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-void/40 px-3 py-1.5 text-sm text-slate-300"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-void/40 px-3 py-1.5 text-sm text-muted"
           >
             <span className={cn('h-1.5 w-1.5 rounded-full bg-gradient-to-br', meta.gradient)} />
             {skill.name}
@@ -102,9 +102,9 @@ const CategoryTile: React.FC<CategoryTileProps> = ({
       </div>
 
       <div className="relative mt-auto pt-6">
-        <div className="mb-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-slate-500">
+        <div className="mb-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-subtle">
           <span>Avg. proficiency</span>
-          <span className="text-slate-300">{average}%</span>
+          <span className="text-muted">{average}%</span>
         </div>
         <div className="h-1 overflow-hidden rounded-full bg-surface-light">
           <motion.div
@@ -147,8 +147,8 @@ export const Skills: React.FC = () => {
               transition={{ duration: 0.4, delay: index * 0.06 }}
               className="rounded-2xl border border-border bg-surface/40 p-5 text-center backdrop-blur-sm"
             >
-              <div className="font-display text-3xl font-bold text-white">{kpi.value}</div>
-              <div className="mt-1 text-xs text-slate-400">{kpi.label}</div>
+              <div className="font-display text-3xl font-bold text-content">{kpi.value}</div>
+              <div className="mt-1 text-xs text-muted">{kpi.label}</div>
             </motion.div>
           ))}
         </div>

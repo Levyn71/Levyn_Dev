@@ -36,9 +36,9 @@ export const Button = React.memo(function Button({
     {
       // Variants
       'bg-accent-1 text-white hover:bg-accent-1-dark': variant === 'primary',
-      'bg-surface text-white hover:bg-surface-light': variant === 'secondary',
-      'bg-transparent text-white hover:bg-white/5': variant === 'ghost',
-      'border border-border bg-transparent text-white hover:border-accent-1': variant === 'outline',
+      'bg-surface text-content hover:bg-surface-light': variant === 'secondary',
+      'bg-transparent text-content hover:bg-content/5': variant === 'ghost',
+      'border border-border bg-transparent text-content hover:border-accent-1': variant === 'outline',
       // Sizes
       'px-4 py-2 text-sm rounded-lg': size === 'sm',
       'px-6 py-3 text-base rounded-xl': size === 'md',

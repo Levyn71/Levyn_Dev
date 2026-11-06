@@ -12,7 +12,7 @@ import { sendContactEmail } from '@/shared/lib';
 import { useInView } from '@/shared/hooks';
 
 const INPUT_CLASS =
-  'w-full rounded-xl border border-border bg-void/40 px-4 py-3 text-white placeholder-slate-500 transition-colors focus:border-accent-1/60 focus:outline-none focus:ring-2 focus:ring-accent-1/20';
+  'w-full rounded-xl border border-border bg-void/40 px-4 py-3 text-content placeholder-subtle transition-colors focus:border-accent-1/60 focus:outline-none focus:ring-2 focus:ring-accent-1/20';
 
 export const Contact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -80,10 +80,10 @@ export const Contact: React.FC = () => {
             </span>
 
             <div>
-              <h3 className="font-display text-3xl font-semibold leading-tight text-white md:text-4xl">
+              <h3 className="font-display text-3xl font-semibold leading-tight text-content md:text-4xl">
                 Let's Start a Conversation
               </h3>
-              <p className="mt-4 max-w-md text-slate-400">
+              <p className="mt-4 max-w-md text-muted">
                 Whether you have a question about my work, want to discuss a project, or just want
                 to say hi, I'm always open to new opportunities and connections.
               </p>
@@ -100,13 +100,13 @@ export const Contact: React.FC = () => {
                   </svg>
                 </span>
                 <span className="min-w-0">
-                  <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                  <span className="block font-mono text-[11px] uppercase tracking-wider text-subtle">
                     Email
                   </span>
-                  <span className="block truncate text-white">{portfolioData.contact.email}</span>
+                  <span className="block truncate text-content">{portfolioData.contact.email}</span>
                 </span>
                 <svg
-                  className="ml-auto h-4 w-4 shrink-0 text-slate-600 transition-all group-hover:translate-x-1 group-hover:text-accent-1"
+                  className="ml-auto h-4 w-4 shrink-0 text-subtle transition-all group-hover:translate-x-1 group-hover:text-accent-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -124,16 +124,16 @@ export const Contact: React.FC = () => {
                   </svg>
                 </span>
                 <span>
-                  <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                  <span className="block font-mono text-[11px] uppercase tracking-wider text-subtle">
                     Location
                   </span>
-                  <span className="block text-white">Remote / Worldwide</span>
+                  <span className="block text-content">Remote / Worldwide</span>
                 </span>
               </div>
             </div>
 
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-slate-500">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-subtle">
                 Connect
               </span>
               <div className="mt-3 flex gap-3">
@@ -146,7 +146,7 @@ export const Contact: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={link.platform}
-                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/60 text-slate-400 transition-all hover:-translate-y-0.5 hover:border-accent-1/50 hover:text-white"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/60 text-muted transition-all hover:-translate-y-0.5 hover:border-accent-1/50 hover:text-content"
                     >
                       <SocialIcon platform={link.platform} />
                     </a>
@@ -169,8 +169,8 @@ export const Contact: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h4 className="font-display text-xl font-semibold text-white">Message Sent!</h4>
-                  <p className="mt-2 text-slate-400">Thanks for reaching out. I'll get back to you soon.</p>
+                  <h4 className="font-display text-xl font-semibold text-content">Message Sent!</h4>
+                  <p className="mt-2 text-muted">Thanks for reaching out. I'll get back to you soon.</p>
                   <Button variant="outline" className="mt-6" onClick={() => setIsSubmitted(false)}>
                     Send Another Message
                   </Button>
@@ -178,17 +178,17 @@ export const Contact: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-subtle">
                       Send a message
                     </span>
-                    <h4 className="mt-1 font-display text-xl font-semibold text-white">
+                    <h4 className="mt-1 font-display text-xl font-semibold text-content">
                       Tell me about your project
                     </h4>
                   </div>
 
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-300">
+                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-muted">
                         Name
                       </label>
                       <input
@@ -202,7 +202,7 @@ export const Contact: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-300">
+                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-muted">
                         Email
                       </label>
                       <input
@@ -218,7 +218,7 @@ export const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-300">
+                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-muted">
                       Message
                     </label>
                     <textarea

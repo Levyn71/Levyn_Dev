@@ -33,6 +33,18 @@
   --stagger: 0.08s;
 }
 
+/* Palette tokens — channels are space-separated for rgb(var(--x) / <alpha>) */
+:root {
+  --c-void: 3 7 18;
+  --c-surface: 15 23 42;
+  --c-surface-light: 30 41 59;
+  --c-border: 30 41 59;
+  --c-border-light: 51 65 85;
+  --c-content: 255 255 255;
+  --c-muted: 148 163 184;
+  --c-subtle: 100 116 139;
+}
+
 /* Base styles */
 * {
   box-sizing: border-box;
@@ -48,10 +60,11 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-void);
-  color: white;
+  background-color: rgb(var(--c-void));
+  color: rgb(var(--c-content));
   min-height: 100vh;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Selection */
@@ -66,16 +79,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-void);
+  background: rgb(var(--c-void));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: rgb(var(--c-border));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-border-light);
+  background: rgb(var(--c-border-light));
 }
 
 /* Reduced motion */
@@ -105,10 +118,10 @@ canvas {
 
 /* Glass morphism base */
 .glass {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgb(var(--c-surface) / 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(30, 41, 59, 0.8);
+  border: 1px solid rgb(var(--c-border) / 0.8);
 }
 
 /* Gradient text */

@@ -48,7 +48,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       
       <h2
         className={cn(
-          'font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-white',
+          'font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-content',
           'transition-all duration-500 delay-100',
           isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         )}
@@ -59,7 +59,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       {subtitle && (
         <p
           className={cn(
-            'mt-4 text-lg text-slate-400 max-w-2xl',
+            'mt-4 text-lg text-muted max-w-2xl',
             align === 'center' && 'mx-auto',
             'transition-all duration-500 delay-200',
             isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'

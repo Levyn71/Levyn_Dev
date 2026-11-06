@@ -88,7 +88,7 @@ export const AssetLoader: React.FC<AssetLoaderProps> = ({ children }) => {
               
               {/* Percentage text */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-mono text-lg text-white font-semibold">
+                <span className="font-mono text-lg text-content font-semibold">
                   {Math.round(progress)}%
                 </span>
               </div>
@@ -106,7 +106,7 @@ export const AssetLoader: React.FC<AssetLoaderProps> = ({ children }) => {
 
             {/* Loading text */}
             <motion.p
-              className="mt-4 text-sm text-slate-400 font-mono"
+              className="mt-4 text-sm text-muted font-mono"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
             >

@@ -144,14 +144,14 @@ export const Chatbot: React.FC = () => {
                 <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-surface bg-green-400" />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="truncate font-display text-sm font-semibold text-white">
+                <h3 className="truncate font-display text-sm font-semibold text-content">
                   Levyn's Assistant
                 </h3>
                 <p className="font-mono text-[11px] text-green-400">Online</p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-muted transition-colors hover:bg-content/5 hover:text-content"
                 aria-label="Close chat"
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -181,7 +181,7 @@ export const Chatbot: React.FC = () => {
                     className={`max-w-[78%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       message.type === 'user'
                         ? 'rounded-br-md bg-accent-1 text-white'
-                        : 'rounded-bl-md border border-border bg-surface-light/70 text-slate-200'
+                        : 'rounded-bl-md border border-border bg-surface-light/70 text-content'
                     }`}
                   >
                     {message.text}
@@ -215,7 +215,7 @@ export const Chatbot: React.FC = () => {
                   <button
                     key={reply}
                     onClick={() => handleSendMessage(reply)}
-                    className="rounded-full border border-border bg-surface-light/50 px-3 py-1.5 text-xs text-slate-300 transition-all hover:border-accent-1/50 hover:text-white"
+                    className="rounded-full border border-border bg-surface-light/50 px-3 py-1.5 text-xs text-muted transition-all hover:border-accent-1/50 hover:text-content"
                   >
                     {reply}
                   </button>
@@ -233,12 +233,12 @@ export const Chatbot: React.FC = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
-                  className="flex-1 bg-transparent py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none"
+                  className="flex-1 bg-transparent py-2.5 text-sm text-content placeholder-subtle focus:outline-none"
                 />
                 <button
                   onClick={() => handleSendMessage(inputValue)}
                   disabled={!inputValue.trim()}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent-1 text-white transition-all hover:bg-accent-1-dark disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-500"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent-1 text-white transition-all hover:bg-accent-1-dark disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-subtle"
                   aria-label="Send message"
                 >
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
